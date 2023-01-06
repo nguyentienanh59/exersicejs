@@ -26,13 +26,14 @@ let menu = {
   name: "Bui Viet Hoang",
 };
 function multiplyNumberic(obj) {
-  return [obj].map((item) => ({
-    ...item,
-    width: item.width * 2,
-    height: item.height * 2,
-  }));
+  for (key in obj) {
+    if (typeof obj[key] == "number") {
+      obj[key] *= 2;
+    }
+  }
+  return obj;
 }
-console.log(multiplyNumberic(menu));
+console.log(multiplyNumberic({ ...menu }));
 console.log(menu);
 
 // Bai 4
