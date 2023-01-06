@@ -72,18 +72,11 @@ console.log(camelize("background-color"));
 
 // Bai 6
 let arrays = [1, 3, 4, 5, 6, 7];
-function filterRangeInPlace(arrs, a, b) {
-  for (let i = 0; i < arrs.length; i++) {
-    let val = arrs[i];
-    if (val < a || val > b) {
-      arrs.splice(i, 2);
-      i--;
-    }
-  }
+function filterRange(arr, a, b) {
+  return arr.filter((item) => a <= item && item <= b);
 }
 
-filterRangeInPlace(arrays, 1, 5);
-console.log(arrays);
+console.log(filterRange(arrays, 1, 5));
 
 //Bai 7
 let initArray = [
@@ -95,7 +88,7 @@ let initArray = [
   { name: "Hoang2", age: 18 },
 ];
 
-let transArr = initArray.map((key) => key.name);
+let transArr = initArray.filter((key) => key.name).map((item) => item.name);
 console.log(transArr);
 console.log(initArray);
 // Bai 8
@@ -113,7 +106,16 @@ let flattened = [
   [3, 4],
   [5, 6],
 ];
-console.log(flattened.flat());
+
+function flatten(arr) {
+  while (arr.some((item) => Array.isArray(item))) {
+    arr = [].concat(...arr);
+  }
+  return arr;
+}
+
+let arr = [1, 2, [3, 4], [5, [6, 7]]];
+console.log(flatten(flattened));
 
 // bai 11
 const rowData = [
@@ -141,3 +143,4 @@ const listUserUppers = rowData
     return name2.localeCompare(name1);
   });
 console.log(listUserUppers);
+

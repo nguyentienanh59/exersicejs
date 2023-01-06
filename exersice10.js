@@ -2,8 +2,7 @@ function print_number() {
   let number = document.getElementById("number").value;
   number = parseInt(number);
   let htmlError = `1 </br> Vui lòng nhập giá trị số vào ô input`;
-
-  if (number == " " || isNaN(number) || number == null || number == undefined) {
+  if (number === 0 || isNaN(number)) {
     return (document.getElementById("result").innerHTML = htmlError);
   } else {
     let html = "";
