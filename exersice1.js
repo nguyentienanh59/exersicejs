@@ -1,8 +1,7 @@
 // Bai 1
-let user = {
-  name: "Hoang",
-  surename: "Viet",
-};
+let user = {};
+user.name = "Hoang";
+user.surename = "Viet";
 user.name = "Bui";
 delete user.name;
 console.log(user);
@@ -13,13 +12,12 @@ let salaries = {
   Viet: 1600,
   Hoang: 1350,
 };
-
-let sum = 0;
-for (let key in salaries) {
-  sum += salaries[key];
+const arrayS = Object.values(salaries);
+console.log(arrayS);
+function sumSalaries(arrSala) {
+  return arrSala.reduce((prev, crValue) => prev + Number(crValue), 0);
 }
-console.log(sum);
-
+console.log(sumSalaries(arrayS));
 // Bai 3
 
 let menu = {
@@ -27,16 +25,15 @@ let menu = {
   height: 300,
   name: "Bui Viet Hoang",
 };
-
-function multiplyNumeric(menu) {
-  for (let key in menu) {
-    if (typeof menu[key] == "number") {
-      menu[key] *= 2;
-    }
-  }
-  return menu;
+function multiplyNumberic(obj) {
+  return [obj].map((item) => ({
+    ...item,
+    width: item.width * 2,
+    height: item.height * 2,
+  }));
 }
-console.log(multiplyNumeric(menu));
+console.log(multiplyNumberic(menu));
+console.log(menu);
 
 // Bai 4
 //Tạo mảng có tên là styles với các mục “Jazz” và “Blues”.
@@ -143,4 +140,3 @@ const listUserUppers = rowData
     return name2.localeCompare(name1);
   });
 console.log(listUserUppers);
-
